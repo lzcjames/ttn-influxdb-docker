@@ -1,6 +1,6 @@
 # ttn-influxdb-docker
 
-A simple app under Docker-compose which lets The Things Network data transfer into InfluxDB using MQTT protocol or REST API
+A simple app under Docker-compose which lets The Things Network data transfer into InfluxDB using MQTT protocol or TTN Storage (REST) API
 
 ## Prerequisite
 
