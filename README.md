@@ -42,8 +42,8 @@ cd ttn-influxdb-docker
 docker compose up
 ```
 
-To navigate InfluxDB console, type 127.0.0.1:9999
+To navigate the InfluxDB console, type 127.0.0.1:9999
 
-Username: lorauser
+- Username: lorauser
 
-Password: password
+- Password: password
