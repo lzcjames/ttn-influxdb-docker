@@ -55,7 +55,7 @@ Example:
 ```bash
 FROM debian:buster-slim
 RUN apt-get update -y \
-          && apt-get -y install openssh-server  net-tools iputils-ping nano
+          && apt-get -y install openssh-server net-tools iputils-ping nano
 		  
 ENTRYPOINT tail -F /dev/null	
 ```
@@ -75,8 +75,9 @@ Then, `docker run -dit TAGNAME_CONTAINER /bin/bash`
 An alternative command `docker run -dit --privileged=true TAGNAME_CONTAINER  "/sbin/init"` for using like `iptables`, `systemctl` in the container.
 
 #### Limitations :(
-The option `--network=host` lets a container to join the network of host, so it can ping host. But if the host runs Docker Desktop for Window, it can not route to the container.
+The option `--network=host` lets a container to join the network of host, so it can ping the host. 
+But if the host runs Docker Desktop for Window:
 ```
-The Docker Desktop for Windows CAN NOT route traffic to a **linux container** but to a windows container.
+The Docker Desktop for Windows CAN NOT route traffic to a linux container but to a windows container.
 ```
 Ref:https://docs.docker.com/docker-for-windows/networking/#i-cannot-ping-my-containers
