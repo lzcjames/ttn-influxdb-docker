@@ -47,3 +47,36 @@ To navigate the InfluxDB console, type 127.0.0.1:9999
 - Username: lorauser
 
 - Password: password
+
+
+### Good to know
+Dockerfile can be also built, and run directly.
+Example:
+```bash
+FROM debian:buster-slim
+RUN apt-get update -y \
+          && apt-get -y install openssh-server  net-tools iputils-ping nano
+		  
+ENTRYPOINT tail -F /dev/null	
+```
+
+#### To build Dockerfile
+`docker build -t TAGNAME_CONTAINER .`
+
+#### To keep container running:
+
+**solution 1**
+The command `tail -F /dev/null` is always running in a container so that it keeps the container running.
+Then, `docker run -dit TAGNAME_CONTAINER`
+
+**solution 2**
+Add `/bin/bash` in the end of command `docker run ...`
+Then, `docker run -dit TAGNAME_CONTAINER /bin/bash`
+An alternative command `docker run -dit --privileged=true TAGNAME_CONTAINER  "/sbin/init"` for using like `iptables`, `systemctl` in the container.
+
+#### Limitations :(
+The option `--network=host` lets a container to join the network of host, so it can ping host. But if the host runs Docker Desktop for Window, it can not route to the container.
+```
+The Docker Desktop for Windows CAN NOT route traffic to a **linux container** but to a windows container.
+```
+Ref:https://docs.docker.com/docker-for-windows/networking/#i-cannot-ping-my-containers
